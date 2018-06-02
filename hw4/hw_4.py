@@ -6,9 +6,13 @@ print('укажите путь к файлу. полный. пожалуйста
 path = str(input())
 with open(path, encoding="utf-8") as f:
     text = f.read()
-    splited_text = text.split()
-for line in splited_text:
+    splitted_text = text.split()
+for line in splitted_text:
         if line.endswith(',') or line.endswith('.'):
+            a += 1
+        elif line.endswith(';') or line.endswith(':'):
+            a += 1
+        elif line.endswith('!') or line.endswith('?'):
             a += 1
         else:
             b += 1
