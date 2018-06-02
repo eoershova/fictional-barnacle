@@ -1,0 +1,51 @@
+
+def reader():
+    with open('Ozhegov.txt', 'r', encoding='utf-8') as f:
+        text = f.read()
+        d = text.splitlines()
+    return d
+
+
+def word_finder(d):
+    for line in d:
+        slovo = line.split('|')[0]
+        if slovo.startswith('кин') and slovo.endswith('т'):
+                print(slovo)
+
+
+def anton_finder(d):
+    anton = 0
+    for line in d:
+        anton_word = line.split('|')[2]
+        #print(anton_word)
+        if len(anton_word) > 0:
+            anton += 1
+    print('число антонимов:', anton)
+
+
+def ozhegov_interactive(d):
+    print('введите слова через пробел')
+    user_words = input()
+    words = user_words.split(' ')
+    for word in words:
+        #print(word)
+        for line in d:
+            if line.split('|')[0] == word:
+                definition = line.split('|')[1]
+                example = line.split('|')[3]
+                if definition != '':
+                    print(len(word), definition, example, sep=':')
+                else:
+                    definition = 'слово не нашлось'
+                    print(definition)
+
+
+def main():
+    d = reader()
+    word_finder(d)
+    anton_finder(d)
+    ozhegov_interactive(d)
+
+
+if __name__ == "__main__":
+    main()
