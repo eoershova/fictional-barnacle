@@ -33,13 +33,18 @@ def ozhegov_interactive(d):
             if line.split('|')[0] == word:
                 definition = line.split('|')[1]
                 example = line.split('|')[3]
-                if definition != '':
-                    print(len(word), definition, example, sep=':')
-                else:
-                    definition = 'слово не нашлось'
-                    print(definition)
+                print(len(word), definition, example, sep=':')
+            else:
+                definition = 0
+    if definition == 0:
+        print('слово не нашлось')
 
 
+
+
+
+
+# катод кинопрокат кот мям
 def main():
     d = reader()
     word_finder(d)
