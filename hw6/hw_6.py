@@ -1,3 +1,4 @@
+
 # хайку на немецком
 import random
 
@@ -10,6 +11,11 @@ def article():
 def noun():
     nouns = ['Großmutter', 'Melodie', 'Malerei', 'Facette', 'Waagschale']
     return random.choice(nouns)
+
+
+def preposition():
+    prepositions = ['Mit', 'Aus', 'In']
+    return random.choice(prepositions)
 
 
 def adjective():
@@ -29,7 +35,7 @@ def pronoun():
 
 def modifier():
     modifiers = ['auch', 'ganz', 'gar']
-    var =  random.choice(modifiers)
+    var = random.choice(modifiers)
     if var == 'gar':
         return var + ' ' + 'nicht'
     elif var == 'ganz':
@@ -39,13 +45,12 @@ def modifier():
         return var + ' ' + '' + random.choice(another_modifier)
 
 
-
 def verse1():
     return article() + ' ' + noun()
 
 
 def verse2():
-    return 'Mit' + ' ' + adjective() + ' ' + another_noun()
+    return preposition() + ' ' + adjective() + ' ' + another_noun()
 
 
 def verse3():
