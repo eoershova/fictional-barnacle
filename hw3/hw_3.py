@@ -9,7 +9,7 @@
 #acadabraabr
 #racadabraab
 #bracadabraa
-
+print('введите последовательность букв или цифр без разделеителй')
 letters = list(input())
 x = len(letters)
 # x is len_letters
