@@ -52,7 +52,7 @@ def modifier():
     elif var == 'ganz':
         return var + ' ' + 'gern'
     else:
-        another_modifier = ['gern', 'ganz']
+        another_modifier = read_words_from_file('modifiers_set_2.txt')
         return var + ' ' + '' + random.choice(another_modifier)
 
 
