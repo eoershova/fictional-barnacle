@@ -22,12 +22,10 @@ def only_ed_forms():
     filename = input()
     with open(filename, encoding='utf-8') as f:
         text = f.read()
-        text = text.replace('-', '')
-        text = text.replace(',', '').replace('.', '')
-        text = text.replace(';', '').replace(':', '')
-        text = text.replace('!', '').replace('?', '')
-        text = text.replace('...', '')
         text = text.lower()
+        punctuation = '.,&!@*()-?:;“”'
+        trans_table = str.maketrans({x: None for x in punctuation})
+        text = text.translate(trans_table)
         words = text.split()
     for line in words:
         if line.endswith('ed'):
