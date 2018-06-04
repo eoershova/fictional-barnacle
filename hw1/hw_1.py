@@ -1,7 +1,10 @@
 #a и b в сумме дают c
 #a разделить на b равно c
+print('введите число a')
 a = int(input())
+print('введите число b')
 b = int(input())
+print('введите число c')
 c = int(input())
 
 if a + b == c:
