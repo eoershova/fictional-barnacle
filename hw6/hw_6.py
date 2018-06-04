@@ -1,40 +1,51 @@
-
 # хайку на немецком
 import random
 
 
+def read_words_from_file(filename):
+    with open(filename, 'r', encoding='utf-8') as f:
+        text = f.read()
+        words = text.split(', ')
+    return words
+
+
 def article():
-    articles = ['Meine', 'Deine', 'Seine', 'Ihre', 'Keine', 'Kleine']
+    articles = read_words_from_file('articles.txt')
     return random.choice(articles)
 
 
 def noun():
-    nouns = ['Großmutter', 'Melodie', 'Malerei', 'Facette', 'Waagschale']
+    nouns = read_words_from_file('nouns.txt')
     return random.choice(nouns)
 
 
 def preposition():
-    prepositions = ['Mit', 'Aus', 'In']
+    prepositions = read_words_from_file('prepositions.txt')
     return random.choice(prepositions)
 
 
 def adjective():
-    adjectives = ['anatomischen', 'declarativen', 'demiurgischen', 'unerfindlichen', 'birnenförmigen', 'charakterlosen']
+    adjectives = read_words_from_file('adjectives.txt')
     return random.choice(adjectives)
 
 
 def another_noun():
-    nouns_2 = ['Baum', 'Bein', 'Bier', 'Freund', 'Zwerg', 'Maul', 'Haar']
+    nouns_2 = read_words_from_file('nouns_set_2.txt')
     return random.choice(nouns_2)
 
 
 def pronoun():
-    pronouns = ['Mir', 'Ihm', 'Uns', 'Dir', 'Ihr']
+    pronouns = read_words_from_file('pronouns.txt')
     return random.choice(pronouns)
 
 
+def verb():
+    verbs = read_words_from_file('verbs.txt')
+    return random.choice(verbs)
+
+
 def modifier():
-    modifiers = ['auch', 'ganz', 'gar']
+    modifiers = read_words_from_file('modifiers.txt')
     var = random.choice(modifiers)
     if var == 'gar':
         return var + ' ' + 'nicht'
@@ -54,7 +65,7 @@ def verse2():
 
 
 def verse3():
-    return pronoun() + ' ' + 'gefällt' + ' ' + modifier()
+    return pronoun() + ' ' + verb() + ' ' + modifier()
 
 
 def main():
