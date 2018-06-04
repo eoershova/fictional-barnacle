@@ -2,7 +2,7 @@ import re
 
 
 def text_prep():
-    print('введите полное имя файла')
+    print('название файла')
     with open(input(), 'r', encoding='utf-8') as f:
         text = f.read()
         text = text.lower()
