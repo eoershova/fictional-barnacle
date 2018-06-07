@@ -11,7 +11,8 @@ def f():
 
 def finder(b):
     found = re.findall('Научная\sсфера</th><td>\n<p><span.*title="([А-Яа-я\s]*)', b)
-    print('Научная сфера', found)
+    with open("answer.txt", "w", encoding="utf-8") as f:
+        f.write(str(found))
 
 
 def main():
