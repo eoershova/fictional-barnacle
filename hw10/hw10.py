@@ -10,9 +10,9 @@ def f():
 
 
 def finder(b):
-    found = re.findall('Научная\sсфера</th><td>\n<p><span.*title="([А-Яа-я\s]*)', b)
-    with open("answer.txt", "w", encoding="utf-8") as f:
-        f.write(str(found))
+    found = re.findall('Научная\sсфера([\s\S]*?)</span>', b)
+    answer = re.findall('title="([а-яА-яёЁ\s]*)', found[0])
+    print(answer)
 
 
 def main():
