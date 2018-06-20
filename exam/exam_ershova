@@ -1,0 +1,56 @@
+import os
+import re
+import collections
+import csv
+
+def task_1():
+    start_path = './news/'
+    for root, dirs, files in os.walk(start_path):
+        for file in files:
+            with open(os.path.join(root, file), 'r', encoding='utf-8') as f:
+                text = f.read()
+                title = re.findall('<title>([\s\S]*)</title>', text)
+                words_and_tags = re.sub('"[А-Яа-яёЁ]*"', '', text)
+                new_file = []
+                without_html = re.sub('.html', '', file)
+                new_file.append(without_html)
+                new_file.append('.txt')
+                new_name =''.join(new_file)
+                #print(new_name)
+                words = re.sub('[^А-Яа-яёЁ\s\n\t0-9.]*', '', words_and_tags)
+                with open(new_name, "w", encoding="cp1251") as f:
+                    f.write(title[0])
+                    f.write(' ')
+                    f.write(words)
+
+
+collection = []
+
+
+def task_2():
+    dictionary = collections.Counter()
+    start_path = './news/'
+    for root, dirs, files in os.walk(start_path):
+        for file in files:
+            #print(file)
+            with open(os.path.join(root, file), 'r', encoding='utf-8') as f:
+                text = f.read()
+                collection.append(text)
+        all_texts = ''.join(collection)
+        proper_names = re.findall('"([А-ЯЁ]+[А-Яа-яёЁ-]*)"', all_texts)
+        dictionary.update(proper_names)
+    with open('proper_names.csv', "w", encoding="utf-8") as f:
+        f.write('{}\t{}'.format('найденное имя', 'количество вхождений'))
+        f.write('\n')
+        for k in dictionary.keys():
+                f.write('{}\t{}'.format(k, dictionary[k]))
+                f.write('\n')
+
+
+def main():
+    task_1()
+    task_2()
+
+if __name__ == "__main__":
+    main()
+
